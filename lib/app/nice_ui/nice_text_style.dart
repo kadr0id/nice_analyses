@@ -7,7 +7,6 @@ abstract class NiceTextStyle {
   static const _baseTextStyle = TextStyle(
       fontWeight: NiceFontWeight.regular,
       height: 1.5,
-      package: 'abra_ui',
       fontFamily: 'Formular',
       //color: NiceColors.primaryAccent
       );
