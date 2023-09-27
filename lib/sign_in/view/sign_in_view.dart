@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nice_analyses/app/nice_ui/widgets/primary_action_button.dart';
 import '../../app/form_inputs/email.dart';
+import '../../app/form_inputs/password.dart';
 import '../../app/nice_ui/nice_spacing.dart';
+import '../../app/nice_ui/widgets/nice_password_text_fiel.dart';
 import '../../app/nice_ui/widgets/nice_text_field.dart';
 import '../../app/nice_ui/widgets/registration_header.dart';
 import '../../app/nice_ui/widgets/scrollable_column.dart';
@@ -110,50 +112,43 @@ class _GoToSignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return TextLinkButton(
-      key: const Key('signInView_goToSignUp_textButton'),
-      title: 'Go to sign up',
-      link: '',
-      onPressed: () {}
-    );
+        key: const Key('signInView_goToSignUp_textButton'),
+        title: 'Go to sign up',
+        link: '',
+        onPressed: () {});
   }
 }
 
-class _PasswordInput extends StatefulWidget {
+class _PasswordInput extends StatelessWidget {
   const _PasswordInput({Key? key}) : super(key: key);
 
   @override
-  _PasswordInputState createState() => _PasswordInputState();
-}
-
-class _PasswordInputState extends State<_PasswordInput> {
-  bool _isPasswordVisible = true;
-
-  @override
   Widget build(BuildContext context) {
+    PasswordValidationError password = PasswordValidationError.invalid;
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: NiceSpacing.lg,
       ),
-      child: NiceTextField(
+      child: NicePasswordTextField(
         key: const Key('signInView_passwordInput_textField'),
-        obscureText: _isPasswordVisible,
         labelText: 'Password',
         onChanged: (password) {},
-        // errorText: _getValidationErrorMessage(email),
-        autofillHints: const [AutofillHints.password],
-        suffix: IconButton(
-          icon: Icon(
-            _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
-          ),
-          onPressed: () {
-            setState(() {
-              _isPasswordVisible = !_isPasswordVisible;
-            });
-          },
-        ),
+        errorText: _getValidationErrorMessage(password),
       ),
     );
+  }
+
+  String? _getValidationErrorMessage(
+    PasswordValidationError? error,
+  ) {
+    switch (error) {
+      case PasswordValidationError.invalid:
+        return 'Invalid password';
+      case PasswordValidationError.empty:
+        return 'Please enter a password';
+      case null:
+        return null;
+    }
   }
 }
