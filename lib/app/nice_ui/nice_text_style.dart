@@ -1,8 +1,7 @@
 import 'package:flutter/widgets.dart';
-
 import 'nice_font_weight.dart';
 
-/// Very Good Text Style Definitions
+/// Nice Text Style Definitions
 abstract class NiceTextStyle {
   static const _baseTextStyle = TextStyle(
       fontWeight: NiceFontWeight.regular,

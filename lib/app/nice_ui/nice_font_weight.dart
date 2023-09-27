@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-/// Various standard font weights for the Abra App
+/// Various standard font weights for the Nice App
 abstract class NiceFontWeight {
   /// FontWeight value of `w900`
   static const FontWeight black = FontWeight.w900;
