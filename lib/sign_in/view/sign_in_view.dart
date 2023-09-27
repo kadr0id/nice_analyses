@@ -27,6 +27,8 @@ class SignInView extends StatelessWidget {
             ),
             const Spacer(flex: 10),
             _SignInButton(),
+            const _GoToSignUp(),
+            const Spacer(),
             const SizedBox(height: NiceSpacing.sm),
           ],
         ),
@@ -99,6 +101,21 @@ class _SignInButton extends StatelessWidget {
           onPressed: () {},
         ),
       ),
+    );
+  }
+}
+
+class _GoToSignUp extends StatelessWidget {
+  const _GoToSignUp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+
+    return TextLinkButton(
+      key: const Key('signInView_goToSignUp_textButton'),
+      title: 'Go to sign up',
+      link: '',
+      onPressed: () {}
     );
   }
 }
