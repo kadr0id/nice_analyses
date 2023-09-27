@@ -20,7 +20,7 @@ class SignInView extends StatelessWidget {
             const Spacer(flex: 2),
             _EmailInput(),
             const SizedBox(height: NiceSpacing.xs),
-            // _PasswordInput(),
+            _PasswordInput(),
             const Align(
               alignment: Alignment.centerRight,
               child: _ForgotPasswordButton(),
@@ -116,6 +116,44 @@ class _GoToSignUp extends StatelessWidget {
       title: 'Go to sign up',
       link: '',
       onPressed: () {}
+    );
+  }
+}
+
+class _PasswordInput extends StatefulWidget {
+  const _PasswordInput({Key? key}) : super(key: key);
+
+  @override
+  _PasswordInputState createState() => _PasswordInputState();
+}
+
+class _PasswordInputState extends State<_PasswordInput> {
+  bool _isPasswordVisible = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: NiceSpacing.lg,
+      ),
+      child: NiceTextField(
+        key: const Key('signInView_passwordInput_textField'),
+        obscureText: _isPasswordVisible,
+        labelText: 'Password',
+        onChanged: (password) {},
+        // errorText: _getValidationErrorMessage(email),
+        autofillHints: const [AutofillHints.password],
+        suffix: IconButton(
+          icon: Icon(
+            _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+          ),
+          onPressed: () {
+            setState(() {
+              _isPasswordVisible = !_isPasswordVisible;
+            });
+          },
+        ),
+      ),
     );
   }
 }
