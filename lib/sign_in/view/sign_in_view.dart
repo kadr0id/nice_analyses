@@ -8,6 +8,7 @@ import '../../app/nice_ui/widgets/nice_text_field.dart';
 import '../../app/nice_ui/widgets/registration_header.dart';
 import '../../app/nice_ui/widgets/scrollable_column.dart';
 import '../../app/nice_ui/widgets/text_link_button.dart';
+import '../../sign_up/view/sign_up_page.dart';
 
 class SignInView extends StatelessWidget {
   const SignInView({Key? key}) : super(key: key);
@@ -18,16 +19,17 @@ class SignInView extends StatelessWidget {
       children: [
         ScrollableColumn(
           children: [
+            const Spacer(flex: 1),
             const RegistrationHeader(title: 'Hello Nice analyses!'),
-            const Spacer(flex: 2),
+            const Spacer(flex: 1),
             _EmailInput(),
             const SizedBox(height: NiceSpacing.xs),
-            _PasswordInput(),
+            const _PasswordInput(),
             const Align(
               alignment: Alignment.centerRight,
               child: _ForgotPasswordButton(),
             ),
-            const Spacer(flex: 10),
+            const Spacer(flex: 5),
             _SignInButton(),
             const _GoToSignUp(),
             const Spacer(),
@@ -116,7 +118,9 @@ class _GoToSignUp extends StatelessWidget {
         key: const Key('signInView_goToSignUp_textButton'),
         title: 'Go to sign up',
         link: '',
-        onPressed: () {});
+        onPressed: () {
+          Navigator.of(context).pushReplacement<void, void>(SignUpPage.route());
+        });
   }
 }
 
