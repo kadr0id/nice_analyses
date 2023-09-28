@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nice_analyses/app/form_inputs/email.dart';
 import 'package:nice_analyses/app/form_inputs/password.dart';
-import 'package:nice_analyses/app/nice_ui/widgets/nice_password_text_fiel.dart';
+import 'package:nice_analyses/app/nice_ui/widgets/nice_password_text_field.dart';
 
 import '../../app/nice_ui/nice_spacing.dart';
 import '../../app/nice_ui/widgets/nice_text_field.dart';
