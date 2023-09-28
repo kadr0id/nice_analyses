@@ -10,6 +10,7 @@ import '../../app/nice_ui/widgets/registration_header.dart';
 import '../../app/nice_ui/widgets/scrollable_column.dart';
 import '../../app/nice_ui/widgets/text_link_button.dart';
 import '../../faq/faq.dart';
+import '../../second_menu/view/second_menu_page.dart';
 import '../../sign_in/view/sign_in_page.dart';
 
 class SignUpForm extends StatelessWidget {
@@ -80,6 +81,7 @@ class _LastNameInput extends StatelessWidget {
 
 class _EmailInput extends StatelessWidget {
   const _EmailInput({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     EmailValidationError email = EmailValidationError.empty;
@@ -184,16 +186,14 @@ class _TermsOfUse extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return TextLinkButton(
-      key: const Key('signUpForm_termsOfUse_textButton'),
-      title: 'by signing up user accepts',
-      link: 'Terms of use',
-      direction: Axis.horizontal,
-      onPressed: () {
-        Navigator.of(context).pushReplacement<void, void>(FaqPage.route());
-      }
-    );
+        key: const Key('signUpForm_termsOfUse_textButton'),
+        title: 'by signing up user accepts',
+        link: 'Terms of use',
+        direction: Axis.horizontal,
+        onPressed: () {
+          Navigator.of(context).pushReplacement<void, void>(FaqPage.route());
+        });
   }
 }
 
@@ -202,7 +202,6 @@ class _SignUpButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: NiceSpacing.xxxlg,
@@ -214,6 +213,8 @@ class _SignUpButton extends StatelessWidget {
           title: 'Sign Up',
           onPressed: () {
             FocusScope.of(context).unfocus();
+            Navigator.of(context)
+                .pushReplacement<void, void>(SecondMenuPage.route());
           },
         ),
       ),
