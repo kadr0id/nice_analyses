@@ -22,7 +22,7 @@ class SignInView extends StatelessWidget {
             const Spacer(flex: 1),
             const RegistrationHeader(title: 'Hello Nice analyses!'),
             const Spacer(flex: 1),
-            _EmailInput(),
+            const _EmailInput(),
             const SizedBox(height: NiceSpacing.xs),
             const _PasswordInput(),
             const Align(
@@ -42,6 +42,8 @@ class SignInView extends StatelessWidget {
 }
 
 class _EmailInput extends StatelessWidget {
+  const _EmailInput({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     EmailValidationError email = EmailValidationError.empty;

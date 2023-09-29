@@ -18,7 +18,8 @@ class SignUpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ScrollableColumn(
+
+    return  const ScrollableColumn(
       mainAxisSize: MainAxisSize.min,
       children: [
         RegistrationHeader(title: 'Sign Up'),
