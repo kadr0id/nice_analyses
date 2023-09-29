@@ -15,25 +15,25 @@ class SignUpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScrollableColumn(
+    return  const ScrollableColumn(
       mainAxisSize: MainAxisSize.min,
       children: [
-        const RegistrationHeader(title: 'Sign Up'),
-        const Spacer(flex: 4),
-        const _FirstNameInput(),
-        const SizedBox(height: NiceSpacing.xs),
-        const _LastNameInput(),
-        const SizedBox(height: NiceSpacing.xs),
+        RegistrationHeader(title: 'Sign Up'),
+        Spacer(flex: 4),
+        _FirstNameInput(),
+        SizedBox(height: NiceSpacing.xs),
+        _LastNameInput(),
+        SizedBox(height: NiceSpacing.xs),
         _EmailInput(),
-        const SizedBox(height: NiceSpacing.xs),
-        const _PasswordInput(),
-        const SizedBox(height: NiceSpacing.xs),
-        const _ConfirmPasswordInput(),
+        SizedBox(height: NiceSpacing.xs),
+        _PasswordInput(),
+        SizedBox(height: NiceSpacing.xs),
+        _ConfirmPasswordInput(),
         //const _TermsOfUse(),
-        const Spacer(flex: 4),
-        const Spacer(flex: 2),
-        const _SignIn(),
-        const SizedBox(height: NiceSpacing.sm)
+        Spacer(flex: 4),
+        Spacer(flex: 2),
+        _SignIn(),
+        SizedBox(height: NiceSpacing.sm)
       ],
     );
   }
@@ -76,6 +76,8 @@ class _LastNameInput extends StatelessWidget {
 }
 
 class _EmailInput extends StatelessWidget {
+  const _EmailInput({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     EmailValidationError email = EmailValidationError.empty;
