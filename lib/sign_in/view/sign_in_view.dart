@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nice_analyses/app/nice_ui/widgets/primary_action_button.dart';
-import 'package:nice_analyses/main_analyses.dart';
+import 'package:nice_analyses/main_analyses/view/main_analyses_page.dart';
 import '../../app/form_inputs/email.dart';
 import '../../app/form_inputs/password.dart';
 import '../../app/nice_ui/nice_spacing.dart';
@@ -107,7 +107,7 @@ class _SignInButton extends StatelessWidget {
           title: 'Sign In',
           onPressed: () {
             Navigator.of(context)
-                .pushReplacement<void, void>(MainAnalyses.route());
+                .pushReplacement<void, void>(MainAnalysesPage.route());
           },
         ),
       ),

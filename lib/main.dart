@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nice_analyses/main_analyses.dart';
 import 'package:nice_analyses/sign_in/view/sign_in_page.dart';
 
 void main() {

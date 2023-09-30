@@ -1,29 +1,15 @@
 import 'package:flutter/material.dart';
 
-class MainAnalyses extends StatelessWidget {
-  const MainAnalyses({super.key});
-
-  static Route route() {
-    return MaterialPageRoute<void>(
-      builder: (_) => const MainAnalyses(),
-      settings: const RouteSettings(name: '/main-analyses'),
-    );
-  }
+class MainAnalysesView extends StatelessWidget {
+  const MainAnalysesView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Main Analyses'),
-          elevation: 0,
-          backgroundColor: Colors.amber,
-        ),
-        body: Container(
-          color: Colors.white,
-          child: const SafeArea(
-            child: MainAnalysesList(),
-          ),
+    return Scaffold(
+      body: Container(
+        color: Colors.white,
+        child: const SafeArea(
+          child: MainAnalysesList(),
         ),
       ),
     );
