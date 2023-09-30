@@ -3,6 +3,13 @@ import 'package:flutter/material.dart';
 class MainAnalyses extends StatelessWidget {
   const MainAnalyses({super.key});
 
+  static Route route() {
+    return MaterialPageRoute<void>(
+      builder: (_) => const MainAnalyses(),
+      settings: const RouteSettings(name: '/main-analyses'),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
