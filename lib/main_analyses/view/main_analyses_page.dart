@@ -15,13 +15,27 @@ class MainAnalysesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Main Analyses'),
         elevation: 0,
+        title: const Text(
+          'Main analyses',
+          style: TextStyle(
+            fontSize: 24.0,
+            fontWeight: FontWeight.bold, // Жирний шрифт
+            color: Colors.black, // Колір
+          ),
+        ),
+
+        // leading: IconButton(
+        //   key: const Key('mainAnalyses_back_button'),
+        //   icon: const Icon(Icons.arrow_back_rounded),
+        //   onPressed: () => Navigator.of(context).pop(),
+        //   color: Colors.black,
+        // ),
         backgroundColor: Colors.amber,
       ),
       body: Container(
         color: Colors.white,
-        child: const SafeArea(
+        child: SafeArea(
           child: MainAnalysesView(),
         ),
       ),

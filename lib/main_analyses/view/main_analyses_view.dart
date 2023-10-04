@@ -1,97 +1,159 @@
 import 'package:flutter/material.dart';
+import 'package:nice_analyses/app/nice_ui/widgets/menu_item.dart';
+import 'package:nice_analyses/app/nice_ui/widgets/menu_subtitle.dart';
+import 'package:nice_analyses/app/nice_ui/widgets/menu_title.dart';
+
+class MenuData {
+  final String menuTitle;
+  final List<MenuSubData> menuSubDataList;
+
+  MenuData(this.menuTitle, this.menuSubDataList);
+}
+
+class MenuSubData {
+  final String menuSubTitle;
+  final List<String> menuItems;
+
+  MenuSubData(this.menuSubTitle, this.menuItems);
+}
 
 class MainAnalysesView extends StatelessWidget {
-  const MainAnalysesView({super.key});
+  static Route route() {
+    return MaterialPageRoute<void>(
+      builder: (_) => MainAnalysesView(),
+      settings: const RouteSettings(name: '/main-analyses'),
+    );
+  }
+
+  final List<MenuData> menuDataList = [
+    MenuData(
+      "ГОРМОНИ",
+      [
+        MenuSubData(
+          "Тиреоїдна панель",
+          [
+            "Тіреотропний гормон",
+            "Трийодтиронін загальний",
+            "Трийодтиронін вільний",
+            "Тироксин загальний",
+            "Тироксин вільний",
+            "Тиреоглобулін",
+            "Антитіла до тиреоглобуліну",
+            "Антитіла до тиреопероксидази",
+            "Тиреотропний гормон, а/т до рецепторів",
+            "Кальцитонін",
+            "Антимікросомальні антитіла",
+          ],
+        ),
+        MenuSubData(
+          "Репродуктивна панель",
+          [
+            "Фолікулостимулюючий гормон",
+            "Лютеїнізуючий гормон",
+            "Прогестерон",
+            "Тестостерон загальний",
+            "Тестостерон вільний",
+            "Пролактин",
+          ],
+        ),
+      ],
+    ),
+    MenuData(
+      "ГОРМОНИ 2",
+      [
+        MenuSubData(
+          "Репродуктивна панель 2",
+          [
+            "Фолікулостимулюючий гормон",
+            "Лютеїнізуючий гормон",
+            "Прогестерон",
+            "Тестостерон загальний",
+            "Тестостерон вільний",
+            "Пролактин",
+          ],
+        ),
+      ],
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.white,
-        child: const SafeArea(
-          child: MainAnalysesList(),
-        ),
-      ),
+      body: ExpandableListWidget(menuDataList: menuDataList),
     );
   }
 }
 
-class ItemsList {
-  List<ParentItem> generateParentItems(int count) {
-    List<ParentItem> parentItems = [];
-    for (int i = 1; i <= count; i++) {
-      parentItems.add(
-        ParentItem(
-          'Type of analyses $i',
-          generateChildItems(4),
-        ),
-      );
-    }
-    return parentItems;
-  }
+class ExpandableListWidget extends StatelessWidget {
+  final List<MenuData> menuDataList;
+  final bool useDivider;
 
-  List<ChildItem> generateChildItems(int count) {
-    List<ChildItem> childItems = [];
-    for (int i = 1; i <= count; i++) {
-      childItems.add(
-        ChildItem(
-          'Unit of analysis $i',
-          [],
-        ),
-      );
-    }
-    return childItems;
-  }
-}
+  ExpandableListWidget({
+    required this.menuDataList,
+    this.useDivider = false,
+  });
 
-class MainAnalysesList extends StatefulWidget {
-  const MainAnalysesList({super.key});
-
-  @override
-  State<MainAnalysesList> createState() => _MainAnalysesListState();
-}
-
-class _MainAnalysesListState extends State<MainAnalysesList> {
-  final ItemsList _itemsList = ItemsList();
-  List<ParentItem> _parentItems = [];
-
-  @override
-  void initState() {
-    super.initState();
-    _parentItems = _itemsList.generateParentItems(5);
-  }
+  final Divider customDivider = const Divider(
+    color: Colors.grey,
+    thickness: 1.0,
+  );
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: _parentItems.map((ParentItem parent) {
-        return ExpansionTile(
-          title: Text(parent.title),
-          trailing: const Icon(
-            Icons.add,
-            size: 16,
+    return ListView.builder(
+      itemCount: menuDataList.length,
+      itemBuilder: (context, index) {
+        final menuData = menuDataList[index];
+        return Container(
+          decoration: BoxDecoration(color: Colors.white, boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 5,
+            ),
+          ]),
+          child: ExpansionTile(
+            title: Column(
+              children: [
+                MenuTitleWidget(title: menuData.menuTitle),
+                if (useDivider) const Divider(),
+              ],
+            ),
+            shape: const Border(bottom: BorderSide.none),
+            children: menuData.menuSubDataList.map((menuSubData) {
+              return Column(
+                children: [
+                  Container(
+                    color: Colors.amber,
+                    padding: const EdgeInsets.all(4.0),
+                    alignment: Alignment.center,
+                    child: Column(
+                      children: [
+                        MenuSubTitleWidget(subTitle: menuSubData.menuSubTitle),
+                        if (useDivider)
+                          const Divider(
+                            color: Colors.red,
+                            thickness: 0.0,
+                          ),
+                      ],
+                    ),
+                  ),
+                  Column(
+                    children: menuSubData.menuItems.map((item) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          MenuItemWidget(item: item),
+                          if (!useDivider) const Divider(),
+                        ],
+                      );
+                    }).toList(),
+                  ),
+                ],
+              );
+            }).toList(),
           ),
-          children: parent.children.map((ChildItem child) {
-            return ListTile(
-              title: Text(child.title),
-            );
-          }).toList(),
         );
-      }).toList(),
+      },
     );
   }
-}
-
-class ParentItem {
-  ParentItem(this.title, this.children);
-
-  final String title;
-  final List<ChildItem> children;
-}
-
-class ChildItem {
-  ChildItem(this.title, this.children);
-
-  final String title;
-  final List<ChildItem> children;
 }
