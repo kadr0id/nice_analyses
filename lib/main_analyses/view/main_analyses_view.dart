@@ -3,107 +3,98 @@ import 'package:nice_analyses/app/nice_ui/widgets/menu_item.dart';
 import 'package:nice_analyses/app/nice_ui/widgets/menu_subtitle.dart';
 import 'package:nice_analyses/app/nice_ui/widgets/menu_title.dart';
 
-class MenuData {
-  final String menuTitle;
-  final List<MenuSubData> menuSubDataList;
-
-  MenuData(this.menuTitle, this.menuSubDataList);
-}
-
-class MenuSubData {
-  final String menuSubTitle;
-  final List<String> menuItems;
-
-  MenuSubData(this.menuSubTitle, this.menuItems);
-}
-
 class MainAnalysesView extends StatelessWidget {
-  static Route route() {
-    return MaterialPageRoute<void>(
-      builder: (_) => MainAnalysesView(),
-      settings: const RouteSettings(name: '/main-analyses'),
-    );
-  }
+  const MainAnalysesView({
+    Key? key,
+  }) : super(key: key);
 
-  final List<MenuData> menuDataList = [
-    MenuData(
-      "ГОРМОНИ",
-      [
-        MenuSubData(
-          "Тиреоїдна панель",
-          [
-            "Тіреотропний гормон",
-            "Трийодтиронін загальний",
-            "Трийодтиронін вільний",
-            "Тироксин загальний",
-            "Тироксин вільний",
-            "Тиреоглобулін",
-            "Антитіла до тиреоглобуліну",
-            "Антитіла до тиреопероксидази",
-            "Тиреотропний гормон, а/т до рецепторів",
-            "Кальцитонін",
-            "Антимікросомальні антитіла",
-          ],
-        ),
-        MenuSubData(
-          "Репродуктивна панель",
-          [
-            "Фолікулостимулюючий гормон",
-            "Лютеїнізуючий гормон",
-            "Прогестерон",
-            "Тестостерон загальний",
-            "Тестостерон вільний",
-            "Пролактин",
-          ],
-        ),
-      ],
-    ),
-    MenuData(
-      "ГОРМОНИ 2",
-      [
-        MenuSubData(
-          "Репродуктивна панель 2",
-          [
-            "Фолікулостимулюючий гормон",
-            "Лютеїнізуючий гормон",
-            "Прогестерон",
-            "Тестостерон загальний",
-            "Тестостерон вільний",
-            "Пролактин",
-          ],
-        ),
-      ],
-    ),
+  static const List<String> titles = [
+    "ГОРМОНИ",
+    "ГОРМОНИ 2",
+    "ГОРМОНИ 3",
+    "ГОРМОНИ 4",
+  ];
+
+  static const List<String> subtitles = [
+    "Тиреоїдна панель",
+    "Репродуктивна панель",
+    "Репродуктивна панель 2",
+    "Репродуктивна панель 2",
+  ];
+
+  static const List<List<String>> items = [
+    [
+      "Тіреотропний гормон",
+      "Трийодтиронін загальний",
+      "Трийодтиронін вільний",
+      "Тироксин загальний",
+      "Тироксин вільний",
+      "Тиреоглобулін",
+      "Антитіла до тиреоглобуліну",
+      "Антитіла до тиреопероксидази",
+      "Тиреотропний гормон, а/т до рецепторів",
+      "Кальцитонін",
+      "Антимікросомальні антитіла",
+    ],
+    [
+      "Фолікулостимулюючий гормон",
+      "Лютеїнізуючий гормон",
+      "Прогестерон",
+      "Тестостерон загальний",
+      "Тестостерон вільний",
+      "Пролактин",
+    ],
+    [
+      "Фолікулостимулюючий гормон",
+      "Лютеїнізуючий гормон",
+      "Прогестерон",
+      "Тестостерон загальний",
+      "Тестостерон вільний",
+      "Пролактин",
+    ],
+    [
+      "Фолікулостимулюючий гормон",
+      "Лютеїнізуючий гормон",
+      "Прогестерон",
+      "Тестостерон загальний",
+      "Тестостерон вільний",
+      "Пролактин",
+    ],
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ExpandableListWidget(menuDataList: menuDataList),
+    return const ExpandableListWidget(
+      titles: titles,
+      subtitles: subtitles,
+      items: items,
     );
   }
 }
 
 class ExpandableListWidget extends StatelessWidget {
-  final List<MenuData> menuDataList;
+  final List<String> titles;
+  final List<String> subtitles;
+  final List<List<String>> items;
   final bool useDivider;
 
-  ExpandableListWidget({
-    required this.menuDataList,
+  const ExpandableListWidget({
+    Key? key,
+    required this.titles,
+    required this.subtitles,
+    required this.items,
     this.useDivider = false,
-  });
-
-  final Divider customDivider = const Divider(
-    color: Colors.grey,
-    thickness: 1.0,
-  );
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: menuDataList.length,
+      itemCount: titles.length,
       itemBuilder: (context, index) {
-        final menuData = menuDataList[index];
+        final title = titles[index];
+        final subtitle = subtitles[index];
+        final itemList = items[index];
+
         return Container(
           decoration: BoxDecoration(color: Colors.white, boxShadow: [
             BoxShadow(
@@ -112,45 +103,26 @@ class ExpandableListWidget extends StatelessWidget {
             ),
           ]),
           child: ExpansionTile(
-            title: Column(
-              children: [
-                MenuTitleWidget(title: menuData.menuTitle),
-                if (useDivider) const Divider(),
-              ],
-            ),
+            title: MenuTitleWidget(title: title),
             shape: const Border(bottom: BorderSide.none),
-            children: menuData.menuSubDataList.map((menuSubData) {
-              return Column(
+            children: [
+              Column(
                 children: [
                   Container(
                     color: Colors.amber,
                     padding: const EdgeInsets.all(4.0),
                     alignment: Alignment.center,
-                    child: Column(
-                      children: [
-                        MenuSubTitleWidget(subTitle: menuSubData.menuSubTitle),
-                        if (useDivider)
-                          const Divider(
-                            color: Colors.red,
-                            thickness: 0.0,
-                          ),
-                      ],
-                    ),
+                    child: MenuSubTitleWidget(subTitle: subtitle),
                   ),
                   Column(
-                    children: menuSubData.menuItems.map((item) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          MenuItemWidget(item: item),
-                          if (!useDivider) const Divider(),
-                        ],
-                      );
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: itemList.map((item) {
+                      return MenuItemWidget(item: item);
                     }).toList(),
                   ),
                 ],
-              );
-            }).toList(),
+              ),
+            ],
           ),
         );
       },

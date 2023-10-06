@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 class MenuTitleWidget extends StatelessWidget {
   final String title;
 
-  MenuTitleWidget({required this.title});
+  const MenuTitleWidget({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
