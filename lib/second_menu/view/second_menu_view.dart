@@ -12,14 +12,6 @@ class SecondMenuView extends StatelessWidget {
       itemBuilder: (context, index) => Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children:
-            //     [
-            //   menuItemWidget(
-            //     text: input[index],
-            //     width: width,
-            //     height: height,
-            //     image: image[index],
-            //   ),
-            // ]
             _getChildren(input, index, width, height),
       ),
     );
@@ -117,70 +109,7 @@ Widget menuItemWidget(
   );
 }
 
-// Container settingActivitiItem(
-//     {required String title,
-//     //String subtitle,
-//     // int subtitleColor = 0xff7f807f,
-//     bool needDivider = true,
-//     required Function callback}) {
-//   return Container(
-//     padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-//     height: 44.0,
-//     color: Colors.white,
-//     child: Column(
-//       children: <Widget>[
-//         Expanded(
-//           child: Row(
-//             crossAxisAlignment: CrossAxisAlignment.center,
-//             children: <Widget>[
-//               Padding(
-//                   padding: const EdgeInsets.only(left: 4.0, right: 4.0),
-//                   child: SizedBox(
-//                       width: 30,
-//                       child: Center(
-//                           child: Image.asset(
-//                               'icons/alertas_menu.png')))),
-//               Padding(
-//                 padding: EdgeInsets.only(left: 16.0),
-//                 child: Text(
-//                   title,
-//                 ),
-//               ),
-//               Expanded(
-//                 child: Container(),
-//               ),
-// //              (subtitle != null && subtitle.isNotEmpty)
-// //                  ? Text(
-// //                subtitle,
-// //                style: TextStyle(
-// //                    fontSize: 16.0, color: Color(subtitleColor)),
-// //              )
-// //                  :
-//               const SizedBox(),
-//               const Padding(
-//                 padding: EdgeInsets.only(left: 4.0, right: 16.0),
-//                 child: Icon(
-//                   Icons.arrow_forward_ios,
-//                   size: 15,
-//                 ),
-//               )
-//             ],
-//           ),
-//         ),
-//         needDivider
-//             ?
-// //            ? Padding(
-// //          padding: EdgeInsets.only(left: 8.0, ),
-//             //        child:
-//             const Divider(
-//                 height: 2.0,
-//               )
-//             // )
-//             : const SizedBox()
-//       ],
-//     ),
-//   );
-// }
+
 
 BoxDecoration shadowOpenMainCard({double radius = 20, Color? color}) =>
     BoxDecoration(
