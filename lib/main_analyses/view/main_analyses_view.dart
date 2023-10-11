@@ -15,7 +15,7 @@ class MainAnalysesView extends StatelessWidget {
   ];
 
   static const List<List<String>> subtitles = [
-    ["Тиреоїдна панель"],git status
+    ["Тиреоїдна панель"],
     ["Репродуктивна панель"],
     ["Репродуктивна панель 2"]
   ];
