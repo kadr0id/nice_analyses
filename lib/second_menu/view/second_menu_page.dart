@@ -27,9 +27,9 @@ class SecondMenuPage extends StatelessWidget {
       ),
       body: Container(
         color: Colors.white,
-        child: const SafeArea(
-          child: SecondMenuView(),
-        ),
+
+          child: const SecondMenuView(),
+
       ),
     );
   }
