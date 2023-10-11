@@ -12,12 +12,14 @@ class MainAnalysesView extends StatelessWidget {
     "ГОРМОНИ",
     "ГОРМОНИ 2",
     "ГОРМОНИ 3",
+    "ГОРМОНИ 4",
   ];
 
   static const List<List<String>> subtitles = [
     ["Тиреоїдна панель"],
     ["Репродуктивна панель"],
-    ["Репродуктивна панель 2"]
+    ["Репродуктивна панель 2"],
+    ["Репродуктивна панель 3"]
   ];
 
   static const List<List<String>> items = [
@@ -106,6 +108,7 @@ class ExpandableListWidget extends StatelessWidget {
             children: [
               Column(
                 children: [
+                  if (items.isNotEmpty)
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: subtitleList.map((subtitle) {
@@ -117,6 +120,7 @@ class ExpandableListWidget extends StatelessWidget {
                       );
                     }).toList(),
                   ),
+                  if (items.isNotEmpty)
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: itemList.map((item) {
