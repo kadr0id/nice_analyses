@@ -12,14 +12,12 @@ class MainAnalysesView extends StatelessWidget {
     "ГОРМОНИ",
     "ГОРМОНИ 2",
     "ГОРМОНИ 3",
-    "ГОРМОНИ 4",
   ];
 
-  static const List<String> subtitles = [
-    "Тиреоїдна панель",
-    "Репродуктивна панель",
-    "Репродуктивна панель 2",
-    "Репродуктивна панель 2",
+  static const List<List<String>> subtitles = [
+    ["Тиреоїдна панель"],git status
+    ["Репродуктивна панель"],
+    ["Репродуктивна панель 2"]
   ];
 
   static const List<List<String>> items = [
@@ -74,7 +72,7 @@ class MainAnalysesView extends StatelessWidget {
 
 class ExpandableListWidget extends StatelessWidget {
   final List<String> titles;
-  final List<String> subtitles;
+  final List<List<String>> subtitles;
   final List<List<String>> items;
   final bool useDivider;
 
@@ -92,7 +90,7 @@ class ExpandableListWidget extends StatelessWidget {
       itemCount: titles.length,
       itemBuilder: (context, index) {
         final title = titles[index];
-        final subtitle = subtitles[index];
+        final subtitleList = subtitles[index];
         final itemList = items[index];
 
         return Container(
@@ -108,16 +106,21 @@ class ExpandableListWidget extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  Container(
-                    color: Colors.amber,
-                    padding: const EdgeInsets.all(4.0),
-                    alignment: Alignment.center,
-                    child: MenuSubTitleWidget(subTitle: subtitle),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: subtitleList.map((subtitle) {
+                      return Container(
+                        color: Colors.amber,
+                        padding: const EdgeInsets.all(4.0),
+                        alignment: Alignment.center,
+                        child: MenuSubTitleWidget(subTitle: subtitle),
+                      );
+                    }).toList(),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: itemList.map((item) {
-                      return MenuItemWidget(item: item);
+                      return MenuItemWidget(item: item, useDivider: useDivider);
                     }).toList(),
                   ),
                 ],
