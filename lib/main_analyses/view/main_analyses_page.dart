@@ -20,22 +20,15 @@ class MainAnalysesPage extends StatelessWidget {
           'Main analyses',
           style: TextStyle(
             fontSize: 24.0,
-            fontWeight: FontWeight.bold, // Жирний шрифт
-            color: Colors.black, // Колір
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
           ),
         ),
-
-        // leading: IconButton(
-        //   key: const Key('mainAnalyses_back_button'),
-        //   icon: const Icon(Icons.arrow_back_rounded),
-        //   onPressed: () => Navigator.of(context).pop(),
-        //   color: Colors.black,
-        // ),
         backgroundColor: Colors.amber,
       ),
       body: Container(
         color: Colors.white,
-        child: SafeArea(
+        child: const SafeArea(
           child: MainAnalysesView(),
         ),
       ),

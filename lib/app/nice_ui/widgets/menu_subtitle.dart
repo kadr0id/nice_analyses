@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 class MenuSubTitleWidget extends StatelessWidget {
   final String subTitle;
 
-  MenuSubTitleWidget({required this.subTitle});
+  const MenuSubTitleWidget({
+    Key? key,
+    required this.subTitle,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
