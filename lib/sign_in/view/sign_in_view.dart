@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nice_analyses/app/nice_ui/widgets/primary_action_button.dart';
+import 'package:nice_analyses/forgot_password/view/forgot_password_page.dart';
 import 'package:nice_analyses/main_analyses/view/main_analyses_page.dart';
 import '../../app/form_inputs/email.dart';
 import '../../app/form_inputs/password.dart';
@@ -88,7 +89,10 @@ class _ForgotPasswordButton extends StatelessWidget {
       title: 'Forgot password?',
       link: '',
       direction: Axis.horizontal,
-      onPressed: () {},
+      onPressed: () {
+            Navigator.of(context)
+                .pushReplacement<void, void>(ForgotPasswordPage.route());
+          },
     );
   }
 }
