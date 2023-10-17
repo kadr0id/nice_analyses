@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../nice_spacing.dart';
+import '../typography/nice_spacing.dart';
 
 /// {@template registration_header}
 /// Creates a header widget that's reused throughout the registration screens

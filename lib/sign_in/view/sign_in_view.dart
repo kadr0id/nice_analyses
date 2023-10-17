@@ -4,7 +4,7 @@ import 'package:nice_analyses/forgot_password/view/forgot_password_page.dart';
 import 'package:nice_analyses/main_analyses/view/main_analyses_page.dart';
 import '../../app/form_inputs/email.dart';
 import '../../app/form_inputs/password.dart';
-import '../../app/nice_ui/nice_spacing.dart';
+import '../../app/nice_ui/typography/nice_spacing.dart';
 import '../../app/nice_ui/widgets/nice_password_text_field.dart';
 import '../../app/nice_ui/widgets/nice_text_field.dart';
 import '../../app/nice_ui/widgets/registration_header.dart';

@@ -3,6 +3,8 @@ import 'package:nice_analyses/app/nice_ui/widgets/menu_item.dart';
 import 'package:nice_analyses/app/nice_ui/widgets/menu_subtitle.dart';
 import 'package:nice_analyses/app/nice_ui/widgets/menu_title.dart';
 
+import '../../book_analyses/view/book_analyses_page.dart';
+
 class MainAnalysesView extends StatelessWidget {
   const MainAnalysesView({
     Key? key,
@@ -109,24 +111,30 @@ class ExpandableListWidget extends StatelessWidget {
               Column(
                 children: [
                   if (items.isNotEmpty)
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: subtitleList.map((subtitle) {
-                      return Container(
-                        color: Colors.amber,
-                        padding: const EdgeInsets.all(4.0),
-                        alignment: Alignment.center,
-                        child: MenuSubTitleWidget(subTitle: subtitle),
-                      );
-                    }).toList(),
-                  ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: subtitleList.map((subtitle) {
+                        return Container(
+                          color: Colors.amber,
+                          padding: const EdgeInsets.all(4.0),
+                          alignment: Alignment.center,
+                          child: MenuSubTitleWidget(subTitle: subtitle),
+                        );
+                      }).toList(),
+                    ),
                   if (items.isNotEmpty)
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: itemList.map((item) {
-                      return MenuItemWidget(item: item, useDivider: useDivider);
-                    }).toList(),
-                  ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: itemList.map((item) {
+                        return GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pushReplacement<void, void>(
+                                  BookAnalysesPage.route());
+                            },
+                            child: MenuItemWidget(
+                                item: item, useDivider: useDivider));
+                      }).toList(),
+                    ),
                 ],
               ),
             ],

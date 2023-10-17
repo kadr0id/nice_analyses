@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../nice_text_style.dart';
+import '../typography/nice_text_style.dart';
 
 /// {@template nice_text_field}
 /// Creates customized TextField

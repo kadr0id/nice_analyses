@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nice_analyses/app/nice_ui/nice_spacing.dart';
+import 'package:nice_analyses/app/nice_ui/typography/nice_spacing.dart';
 import 'package:nice_analyses/sign_in/sign_in.dart';
 import '../../app/form_inputs/email.dart';
 import '../../app/nice_ui/nice_ui.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../nice_spacing.dart';
-import '../nice_text_style.dart';
+import '../typography/nice_spacing.dart';
+import '../typography/nice_text_style.dart';
 
 /// {@template text_link_button}
 /// Creates a Text Link button.
