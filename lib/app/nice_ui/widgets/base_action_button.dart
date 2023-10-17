@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../nice_spacing.dart';
+import '../typography/nice_spacing.dart';
 
 /// {@template base_action_button}
 /// Creates a base action button.
