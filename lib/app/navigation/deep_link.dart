@@ -10,7 +10,7 @@ typedef PageBuilder = Page Function();
 
 TargetPage parseTargetPage(Uri uri) {
   switch (uri.pathSegments.first) {
-    case 'room':
+    case 'main':
       return TargetPage.login;
     default:
       throw UnimplementedError('Target page $uri not supported');

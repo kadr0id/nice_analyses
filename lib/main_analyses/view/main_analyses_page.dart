@@ -11,6 +11,13 @@ class MainAnalysesPage extends StatelessWidget {
     );
   }
 
+  static Page page() {
+    return const MaterialPage<void>(
+      child: MainAnalysesPage(),
+      name: '/main',
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
