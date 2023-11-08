@@ -11,6 +11,13 @@ class SecondMenuPage extends StatelessWidget {
     );
   }
 
+  static Page page(String s) {
+    return const MaterialPage<void>(
+      child: SecondMenuPage(),
+      name: '/second-menu',
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

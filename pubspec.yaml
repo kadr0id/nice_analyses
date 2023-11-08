@@ -42,6 +42,13 @@ dependencies:
   firebase_crashlytics: ^3.4.0
   firebase_database: ^10.3.0
   firebase_analytics: ^10.6.0
+  equatable: ^2.0.5
+  bloc_test: ^9.1.4
+  mockingjay: ^0.4.0
+  mocktail: ^1.0.1
+  firebase_dynamic_links: ^5.4.2
+  flow_builder: ^0.0.9
+  url_launcher: ^6.2.1
 
 
 dev_dependencies:
