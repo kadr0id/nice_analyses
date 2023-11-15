@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nice_analyses/main_analyses/view/main_analyses_view.dart';
 
+import '../../app/nice_ui/widgets/nice_app_bar.dart';
+
 class MainAnalysesPage extends StatelessWidget {
   const MainAnalysesPage({Key? key}) : super(key: key);
 
@@ -21,17 +23,13 @@ class MainAnalysesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: const Text(
-          'Main analyses',
-          style: TextStyle(
-            fontSize: 24.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        ),
-        backgroundColor: Colors.amber,
+      appBar: NiceAppBar(
+        title: 'Вибір аналізів',
+        centerTitle: true,
+        actions: [
+          IconButton(onPressed: () {},
+              icon: const Icon(Icons.close_rounded))
+        ],
       ),
       body: Container(
         color: Colors.white,
