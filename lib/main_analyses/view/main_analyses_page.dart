@@ -23,32 +23,14 @@ class MainAnalysesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const NiceAppBar(
+      appBar: NiceAppBar(
         title: 'Вибір аналізів',
         centerTitle: true,
+        actions: [
+          IconButton(onPressed: () {},
+              icon: const Icon(Icons.close_rounded))
+        ],
       ),
-      // AppBar(
-      //   leading: IconButton(
-      //     onPressed: () {},
-      //     icon: const Icon(Icons.arrow_back_ios_rounded),
-      //   ),
-      //   centerTitle: true,
-      //   title: const Text(
-      //     'Вибір аналізів',
-      //     style: TextStyle(
-      //       fontSize: 24.0,
-      //       fontWeight: FontWeight.bold,
-      //       color: Colors.black,
-      //     ),
-      //   ),
-      //   actions: const <Widget>[
-      //     Icon(
-      //       Icons.close_rounded,
-      //     ),
-      //
-      //   ],
-      //   backgroundColor: Colors.amber,
-      // ),
       body: Container(
         color: Colors.white,
         child: const SafeArea(
