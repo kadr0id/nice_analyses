@@ -127,3 +127,4 @@ lib/generated_plugin_registrant.dart
 
 # Python related
 venv/
+/android/app/google-services.json

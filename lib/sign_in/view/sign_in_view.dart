@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nice_analyses/app/nice_ui/widgets/primary_action_button.dart';
+import 'package:nice_analyses/forgot_password/view/forgot_password_page.dart';
+import 'package:nice_analyses/main_analyses/view/main_analyses_page.dart';
 import '../../app/form_inputs/email.dart';
 import '../../app/form_inputs/password.dart';
-import '../../app/nice_ui/nice_spacing.dart';
+import '../../app/nice_ui/typography/nice_spacing.dart';
 import '../../app/nice_ui/widgets/nice_password_text_field.dart';
 import '../../app/nice_ui/widgets/nice_text_field.dart';
 import '../../app/nice_ui/widgets/registration_header.dart';
@@ -22,7 +24,7 @@ class SignInView extends StatelessWidget {
             const Spacer(flex: 1),
             const RegistrationHeader(title: 'Hello Nice analyses!'),
             const Spacer(flex: 1),
-            _EmailInput(),
+            const _EmailInput(),
             const SizedBox(height: NiceSpacing.xs),
             const _PasswordInput(),
             const Align(
@@ -42,6 +44,8 @@ class SignInView extends StatelessWidget {
 }
 
 class _EmailInput extends StatelessWidget {
+  const _EmailInput({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     EmailValidationError email = EmailValidationError.empty;
@@ -85,7 +89,10 @@ class _ForgotPasswordButton extends StatelessWidget {
       title: 'Forgot password?',
       link: '',
       direction: Axis.horizontal,
-      onPressed: () {},
+      onPressed: () {
+            Navigator.of(context)
+                .pushReplacement<void, void>(ForgotPasswordPage.route());
+          },
     );
   }
 }
@@ -102,7 +109,10 @@ class _SignInButton extends StatelessWidget {
         child: PrimaryActionButton(
           key: const Key('signInView_signIn_textButton'),
           title: 'Sign In',
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context)
+                .pushReplacement<void, void>(MainAnalysesPage.route());
+          },
         ),
       ),
     );

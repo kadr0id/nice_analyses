@@ -3,13 +3,14 @@ import 'package:nice_analyses/app/form_inputs/email.dart';
 import 'package:nice_analyses/app/form_inputs/password.dart';
 import 'package:nice_analyses/app/nice_ui/widgets/nice_password_text_field.dart';
 
-import '../../app/nice_ui/nice_spacing.dart';
+import '../../app/nice_ui/typography/nice_spacing.dart';
 import '../../app/nice_ui/widgets/nice_text_field.dart';
 import '../../app/nice_ui/widgets/primary_action_button.dart';
 import '../../app/nice_ui/widgets/registration_header.dart';
 import '../../app/nice_ui/widgets/scrollable_column.dart';
 import '../../app/nice_ui/widgets/text_link_button.dart';
 import '../../faq/faq.dart';
+import '../../second_menu/view/second_menu_page.dart';
 import '../../sign_in/view/sign_in_page.dart';
 
 class SignUpForm extends StatelessWidget {
@@ -17,7 +18,8 @@ class SignUpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ScrollableColumn(
+
+    return  const ScrollableColumn(
       mainAxisSize: MainAxisSize.min,
       children: [
         RegistrationHeader(title: 'Sign Up'),
@@ -80,6 +82,7 @@ class _LastNameInput extends StatelessWidget {
 
 class _EmailInput extends StatelessWidget {
   const _EmailInput({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     EmailValidationError email = EmailValidationError.empty;
@@ -184,16 +187,14 @@ class _TermsOfUse extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return TextLinkButton(
-      key: const Key('signUpForm_termsOfUse_textButton'),
-      title: 'by signing up user accepts',
-      link: 'Terms of use',
-      direction: Axis.horizontal,
-      onPressed: () {
-        Navigator.of(context).pushReplacement<void, void>(FaqPage.route());
-      }
-    );
+        key: const Key('signUpForm_termsOfUse_textButton'),
+        title: 'by signing up user accepts',
+        link: 'Terms of use',
+        direction: Axis.horizontal,
+        onPressed: () {
+          Navigator.of(context).pushReplacement<void, void>(FaqPage.route());
+        });
   }
 }
 
@@ -202,7 +203,6 @@ class _SignUpButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: NiceSpacing.xxxlg,
@@ -214,6 +214,8 @@ class _SignUpButton extends StatelessWidget {
           title: 'Sign Up',
           onPressed: () {
             FocusScope.of(context).unfocus();
+            Navigator.of(context)
+                .pushReplacement<void, void>(SecondMenuPage.route());
           },
         ),
       ),

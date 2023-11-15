@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../nice_text_style.dart';
+import '../typography/nice_text_style.dart';
 import 'nice_text_field.dart';
 
 /// {@template nice_password_text_field}
