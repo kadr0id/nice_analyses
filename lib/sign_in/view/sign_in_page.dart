@@ -13,22 +13,9 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        leading: IconButton(
-          key: const Key('signInPage_back_button'),
-          icon: const Icon(Icons.arrow_back_rounded),
-          onPressed: () => Navigator.of(context).pop(),
-          color: Colors.black,
-        ),
-        backgroundColor: Colors.amber,
-      ),
-      body: Container(
-        color: Colors.white,
-        child: const SafeArea(
-          child: SignInView(),
-        ),
+    return const Scaffold(
+      body: SafeArea(
+        child: SignInView(),
       ),
     );
   }

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../focus_listener/focus_listener.dart';
 import '../bloc/app_bloc.dart';
+import '../nice_ui/theme/nice_theme.dart';
 import '../routes/routes.dart';
 
 class App extends StatelessWidget {
@@ -12,8 +13,9 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: FocusListener(
+    return  MaterialApp(
+      theme:  const NiceTheme().themeData,
+      home: const FocusListener(
         child: UrlFlowBuilder(),
       ),
     );
