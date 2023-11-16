@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nice_analyses/app/nice_ui/widgets/base_action_button.dart';
 
+import '../colors/nice_colors.dart';
+
 
 
 /// {@template primary_action_button}
@@ -17,7 +19,7 @@ class PrimaryActionButton extends BaseActionButton {
     key: key,
     title: title,
     onPressed: onPressed,
-    backgroundColor: Colors.orange,
+    backgroundColor: NiceColors.blue,
     horizontalMargin: horizontalMargin,
   );
 }

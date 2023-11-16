@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../colors/nice_colors.dart';
+
 /// {@template nice_app_bar}
 /// Reusable app bar that allows to define title,
 /// leading and trailing widgets.
@@ -64,21 +66,30 @@ class NiceAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize;
 
+  /// Default button corner radius
+  static const double defaultCornerRadius = 14;
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(defaultCornerRadius),
+        side: const BorderSide(
+          color: NiceColors.tertiaryAccent,
+        ),
+      ),
       title: titleWidget ?? Text(title,  style: const TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
-              color: Colors.indigo,
+              color: NiceColors.darkPrimary,
             ),),
       elevation: elevation,
       automaticallyImplyLeading: automaticallyImplyLeading,
       flexibleSpace: flexibleSpace,
       leadingWidth: leadingWidth,
       centerTitle: centerTitle,
-      backgroundColor: color,
-      foregroundColor: foregroundColor,
+     // backgroundColor: color,
+     //  foregroundColor: foregroundColor,
       leading: showLeading ? (leading ?? _AppBarBackButton()) : null,
       actions: actions,
     );
