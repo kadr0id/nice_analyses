@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nice_analyses/sign_in/view/sign_in_view.dart';
 
+import '../../app/nice_ui/widgets/nice_app_bar.dart';
+
 class SignInPage extends StatelessWidget {
   const SignInPage({Key? key}) : super(key: key);
 
@@ -14,15 +16,8 @@ class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        leading: IconButton(
-          key: const Key('signInPage_back_button'),
-          icon: const Icon(Icons.arrow_back_rounded),
-          onPressed: () => Navigator.of(context).pop(),
-          color: Colors.black,
-        ),
-        backgroundColor: Colors.amber,
+      appBar: const NiceAppBar(
+        showLeading: false,
       ),
       body: Container(
         color: Colors.white,
