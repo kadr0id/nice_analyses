@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nice_analyses/app/nice_ui/nice_ui.dart';
 
 import '../colors/nice_colors.dart';
-import '../typography/nice_font_weight.dart';
-import '../typography/nice_text_style.dart';
 
 /// {@template nice_theme}
 /// The Default [ThemeData].
@@ -116,7 +115,6 @@ class NiceTheme {
 
   TextSelectionThemeData get _textSelectionThemeData =>
       const TextSelectionThemeData(cursorColor: NiceColors.black);
-
 
   Color get _backgroundColor => NiceColors.white;
 
