@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:nice_analyses/app/nice_ui/widgets/menu_item.dart';
-import 'package:nice_analyses/app/nice_ui/widgets/menu_subtitle.dart';
-import 'package:nice_analyses/app/nice_ui/widgets/menu_title.dart';
 
+import '../../app/nice_ui/nice_ui.dart';
+import '../../app/nice_ui/widgets/nice_main_item_widget.dart';
 import '../../book_analyses/view/book_analyses_page.dart';
 
 class MainAnalysesView extends StatelessWidget {
@@ -96,17 +95,9 @@ class ExpandableListWidget extends StatelessWidget {
         final title = titles[index];
         final subtitleList = subtitles[index];
         final itemList = items[index];
-
-        return Container(
-          decoration: BoxDecoration(color: Colors.white, boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              blurRadius: 5,
-            ),
-          ]),
+        return NiceMainItem(
           child: ExpansionTile(
             title: MenuTitleWidget(title: title),
-            shape: const Border(bottom: BorderSide.none),
             children: [
               Column(
                 children: [
@@ -131,8 +122,8 @@ class ExpandableListWidget extends StatelessWidget {
                               Navigator.of(context).pushReplacement<void, void>(
                                   BookAnalysesPage.route());
                             },
-                            child: MenuItemWidget(
-                                item: item, useDivider: useDivider));
+                            child:
+                                MenuItemWidget(item: item, useDivider: false));
                       }).toList(),
                     ),
                 ],

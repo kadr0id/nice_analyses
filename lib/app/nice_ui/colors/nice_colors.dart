@@ -10,7 +10,8 @@ abstract class NiceColors {
   static const Color black = Color(0xFF000000);
 
   /// White
-  static const Color white = Color(0xFFFFFFFF);
+  static const Color white = Color(0xFFDEF5FD);
+
 
   /// Transparent
   static const Color transparent = Color(0x00000000);
@@ -44,9 +45,6 @@ abstract class NiceColors {
 
   /// The tertiary accent color.
   static const Color tertiaryAccent = Color(0x4D001F40);
-
-  /// The orange primary color.
-  static const Color orange = Color(0xFFFFA060);
 
   /// The light orange primary color.
   static const Color lightOrange = Color(0x80FFA060);

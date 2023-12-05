@@ -18,14 +18,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       title: 'Nice Analyses',
       theme: const NiceTheme().themeData,
-      // ThemeData(
-      //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      //   useMaterial3: true,
-      // ),
-      home:  const SignInPage(),
+      home: const SignInPage(),
     );
   }
 }

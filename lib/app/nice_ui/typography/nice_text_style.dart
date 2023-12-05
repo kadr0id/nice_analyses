@@ -27,7 +27,7 @@ abstract class NiceTextStyle {
   /// Headline 3 Text Style
   static final TextStyle headline3 = _baseTextStyle.copyWith(
     fontSize: 20,
-    fontWeight: NiceFontWeight.regular,
+    fontWeight: NiceFontWeight.bold,
     height: 1.25,
   );
 

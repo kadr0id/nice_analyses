@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nice_analyses/app/nice_ui/nice_ui.dart';
 
 import '../colors/nice_colors.dart';
-import '../typography/nice_font_weight.dart';
-import '../typography/nice_text_style.dart';
 
 /// {@template nice_theme}
 /// The Default [ThemeData].
@@ -14,7 +13,7 @@ class NiceTheme {
   /// Default `ThemeData` for Nice UI.
   ThemeData get themeData {
     return ThemeData(
-      primaryColor: NiceColors.blue,
+      useMaterial3: true,
       canvasColor: _backgroundColor,
       scaffoldBackgroundColor: _backgroundColor,
       bottomNavigationBarTheme: _bottomNavigationBarTheme,
@@ -30,7 +29,8 @@ class NiceTheme {
       textSelectionTheme: _textSelectionThemeData,
       bottomSheetTheme: _bottomSheetThemeData,
       focusColor: _focusedColor,
-      unselectedWidgetColor: _unselectedWidgetColor, colorScheme: _colorScheme.copyWith(background: _backgroundColor),
+      unselectedWidgetColor: _unselectedWidgetColor,
+      colorSchemeSeed: NiceColors.oceanBlue,
     );
   }
 
@@ -77,6 +77,7 @@ class NiceTheme {
       ),
     );
   }
+
   InputDecorationTheme get _inputDecorationTheme {
     return InputDecorationTheme(
       hintStyle: TextStyle(color: NiceColors.grey.shade500),
@@ -94,9 +95,10 @@ class NiceTheme {
   TextButtonThemeData get _textButtonTheme {
     return TextButtonThemeData(
       style: TextButton.styleFrom(
-        foregroundColor: NiceColors.black, textStyle: _textTheme.labelLarge?.copyWith(
-        fontWeight: NiceFontWeight.light,
-      ),
+        foregroundColor: NiceColors.black,
+        textStyle: _textTheme.labelLarge?.copyWith(
+          fontWeight: NiceFontWeight.light,
+        ),
       ),
     );
   }
@@ -114,24 +116,19 @@ class NiceTheme {
   TextSelectionThemeData get _textSelectionThemeData =>
       const TextSelectionThemeData(cursorColor: NiceColors.black);
 
-
-  ColorScheme get _colorScheme {
-    return const ColorScheme.light(primary: Colors.blue);
-  }
-
   Color get _backgroundColor => NiceColors.white;
 
-  Color get _focusedColor => NiceColors.orange;
+  Color get _focusedColor => NiceColors.blue;
 
   Color get _unselectedWidgetColor => NiceColors.tertiaryAccent;
 }
 
 @override
 BottomSheetThemeData get _bottomSheetThemeData => const BottomSheetThemeData(
-  shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.vertical(
-      top: Radius.circular(40),
-    ),
-  ),
-  clipBehavior: Clip.antiAlias,
-);
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(40),
+        ),
+      ),
+      clipBehavior: Clip.antiAlias,
+    );

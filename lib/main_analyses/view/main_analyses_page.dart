@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nice_analyses/app/nice_ui/nice_ui.dart';
 import 'package:nice_analyses/main_analyses/view/main_analyses_view.dart';
 
 import '../../app/nice_ui/widgets/nice_app_bar.dart';
@@ -31,12 +32,12 @@ class MainAnalysesPage extends StatelessWidget {
               icon: const Icon(Icons.close_rounded))
         ],
       ),
-      body: Container(
-        color: Colors.white,
-        child: const SafeArea(
-          child: MainAnalysesView(),
+      body:  const SafeArea(
+          child: Padding(
+            padding: EdgeInsets.all(NiceSpacing.md),
+            child: MainAnalysesView(),
+          ),
         ),
-      ),
     );
   }
 }
