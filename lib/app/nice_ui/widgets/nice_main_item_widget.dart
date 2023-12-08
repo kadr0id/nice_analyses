@@ -18,14 +18,17 @@ class NiceMainItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          gradient: LinearGradient(
-              begin: Alignment.centerRight,
-              end: Alignment.centerLeft,
-              colors: [Colors.grey, Colors.white])),
-      child: child,
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Container(
+        decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            gradient: LinearGradient(
+                begin: Alignment.centerRight,
+                end: Alignment.centerLeft,
+                colors: [Colors.grey, Colors.white])),
+        child: child,
+      ),
     );
   }
 }

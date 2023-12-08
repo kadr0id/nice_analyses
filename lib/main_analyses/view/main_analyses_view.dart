@@ -123,7 +123,7 @@ class ExpandableListWidget extends StatelessWidget {
                                   BookAnalysesPage.route());
                             },
                             child:
-                                MenuItemWidget(item: item, useDivider: false));
+                                MenuItemWidget(item: item,));
                       }).toList(),
                     ),
                 ],
