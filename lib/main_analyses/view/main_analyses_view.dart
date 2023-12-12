@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nice_analyses/app/nice_ui/widgets/selected_items.dart';
 
 import '../../app/nice_ui/nice_ui.dart';
 import '../../app/nice_ui/widgets/nice_main_item_widget.dart';
@@ -63,12 +64,28 @@ class MainAnalysesView extends StatelessWidget {
     ],
   ];
 
+  static const Map<String, double> selectedItems = {
+    "Фолікулостимулюючий гормон": 315,
+    "Лютеїнізуючий гормон": 176,
+    "Прогестерон": 488,
+    "Тестостерон загальний": 104,
+    "Тестостерон вільний": 222,
+    "Пролактин": 391,
+  };
+
   @override
   Widget build(BuildContext context) {
-    return const ExpandableListWidget(
-      titles: titles,
-      subtitles: subtitles,
-      items: items,
+    return SingleChildScrollView(
+      child: const Column(
+        children: [
+          SelectedItemsWidget(selectedItems: selectedItems),
+          ExpandableListWidget(
+            titles: titles,
+            subtitles: subtitles,
+            items: items,
+          ),
+        ],
+      ),
     );
   }
 }
@@ -90,6 +107,7 @@ class ExpandableListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      shrinkWrap: true,
       itemCount: titles.length,
       itemBuilder: (context, index) {
         final title = titles[index];
@@ -122,8 +140,9 @@ class ExpandableListWidget extends StatelessWidget {
                               Navigator.of(context).pushReplacement<void, void>(
                                   BookAnalysesPage.route());
                             },
-                            child:
-                                MenuItemWidget(item: item,));
+                            child: MenuItemWidget(
+                              item: item,
+                            ));
                       }).toList(),
                     ),
                 ],
