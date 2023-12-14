@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nice_analyses/app/nice_ui/widgets/nice_item_widget.dart';
 import 'package:nice_analyses/app/nice_ui/widgets/selected_items.dart';
 
 import '../../app/nice_ui/nice_ui.dart';
@@ -75,8 +76,8 @@ class MainAnalysesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: const Column(
+    return const SingleChildScrollView(
+      child: Column(
         children: [
           SelectedItemsWidget(selectedItems: selectedItems),
           ExpandableListWidget(
@@ -107,6 +108,7 @@ class ExpandableListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: titles.length,
       itemBuilder: (context, index) {
@@ -136,13 +138,16 @@ class ExpandableListWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: itemList.map((item) {
                         return GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).pushReplacement<void, void>(
-                                  BookAnalysesPage.route());
-                            },
-                            child: MenuItemWidget(
-                              item: item,
-                            ));
+                          onTap: () {
+                            Navigator.of(context).pushReplacement<void, void>(
+                                BookAnalysesPage.route());
+                          },
+                          child: NiceItem(
+                            title: title,
+                            price: '111',
+                            time: '10',
+                          ),
+                        );
                       }).toList(),
                     ),
                 ],

@@ -14,31 +14,46 @@ class SelectedItemsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      color: NiceColors.blue,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const Text(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+            ),
+            gradient: LinearGradient(
+                begin: Alignment.centerRight,
+                end: Alignment.centerLeft,
+                colors: [Colors.grey, Colors.white]),
+          ),
+          padding: const EdgeInsets.all(8.0),
+          child: const Text(
             'Перелік аналізів',
             style: TextStyle(
-              fontWeight: FontWeight.bold,
+              fontWeight: NiceFontWeight.regular,
               fontSize: 16,
-              color: NiceColors.white,
+              color: NiceColors.darkPrimary,
             ),
           ),
-          const SizedBox(height: 8),
-          ListView.builder(
+        ),
+        Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
+            ),
+            color: NiceColors.whiteSecondary,
+          ),
+          child: ListView.builder(
             shrinkWrap: true,
             itemCount: selectedItems.length,
             itemBuilder: (context, index) {
               String key = selectedItems.keys.elementAt(index);
               double value = selectedItems.values.elementAt(index);
               return Container(
-                color: NiceColors.white,
                 padding: const EdgeInsets.only(left: 4.0, right: 4.0),
-                margin: const EdgeInsets.symmetric(vertical: 4.0),
                 child: Row(
                   children: [
                     Text(
@@ -70,8 +85,8 @@ class SelectedItemsWidget extends StatelessWidget {
               );
             },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
