@@ -1,6 +1,5 @@
 export 'base_action_button.dart';
 export 'menu_item.dart';
-export 'menu_subtitle.dart';
 export 'menu_title.dart';
 export 'nice_password_text_field.dart';
 export 'nice_text_field.dart';
