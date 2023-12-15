@@ -28,7 +28,8 @@ class SelectedItemsWidget extends StatelessWidget {
                 end: Alignment.centerLeft,
                 colors: [Colors.grey, Colors.white]),
           ),
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(
+              horizontal: NiceSpacing.lg, vertical: NiceSpacing.sm),
           child: const Text(
             'Перелік аналізів',
             style: TextStyle(
@@ -53,7 +54,7 @@ class SelectedItemsWidget extends StatelessWidget {
               String key = selectedItems.keys.elementAt(index);
               double value = selectedItems.values.elementAt(index);
               return Container(
-                padding: const EdgeInsets.only(left: 4.0, right: 4.0),
+                padding: const EdgeInsets.symmetric(horizontal: NiceSpacing.lg),
                 child: Row(
                   children: [
                     Text(
