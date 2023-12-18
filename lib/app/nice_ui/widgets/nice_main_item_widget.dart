@@ -22,11 +22,12 @@ class NiceMainItem extends StatelessWidget {
       padding: const EdgeInsets.all(4.0),
       child: Container(
         decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-            gradient: LinearGradient(
-                begin: Alignment.centerRight,
-                end: Alignment.centerLeft,
-                colors: [Colors.grey, Colors.white])),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          // gradient: LinearGradient(
+          //     begin: Alignment.centerRight,
+          //     end: Alignment.centerLeft,
+          //     colors: [Colors.grey, Colors.white]),
+        ),
         child: child,
       ),
     );
