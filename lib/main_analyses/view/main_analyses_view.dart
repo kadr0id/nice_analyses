@@ -107,6 +107,7 @@ class ExpandableListWidget extends StatelessWidget {
         return NiceMainItem(
           child: ExpansionTile(
             title: MenuTitleWidget(title: title),
+            shape: Border.all(color: Colors.transparent),
             children: [
               Column(
                 children: [
