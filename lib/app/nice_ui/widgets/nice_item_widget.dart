@@ -42,9 +42,9 @@ class NiceItem extends StatelessWidget {
             gradient: LinearGradient(
                 begin: Alignment.centerRight,
                 end: Alignment.centerLeft,
-                colors: [Colors.grey, Colors.white])),
+                colors: [NiceColors.water, Colors.white])),
         child: Padding(
-          padding: const EdgeInsets.all(4.0),
+          padding: const EdgeInsets.all(NiceSpacing.sm),
           child: InkWell(
             onTap: onPressed,
             child: Row(
@@ -71,7 +71,8 @@ class NiceItem extends StatelessWidget {
                           ),
                         ),
                         const Padding(
-                          padding: EdgeInsets.only(left: NiceSpacing.xxs, right: 4),
+                          padding:
+                              EdgeInsets.only(left: NiceSpacing.xxs, right: 4),
                           child: Icon(
                             Icons.access_time,
                             color: NiceColors.darkSecondary,
@@ -92,7 +93,7 @@ class NiceItem extends StatelessWidget {
                   padding: EdgeInsets.all(8.0),
                   child: Icon(
                     Icons.add_circle_outline,
-                    size: 40,
+                    size: 32,
                     color: NiceColors.oceanBlue,
                   ),
                 )

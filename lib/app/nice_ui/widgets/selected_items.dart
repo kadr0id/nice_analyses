@@ -30,13 +30,9 @@ class SelectedItemsWidget extends StatelessWidget {
           ),
           padding: const EdgeInsets.symmetric(
               horizontal: NiceSpacing.lg, vertical: NiceSpacing.sm),
-          child: const Text(
+          child: Text(
             'Перелік аналізів',
-            style: TextStyle(
-              fontWeight: NiceFontWeight.regular,
-              fontSize: 16,
-              color: NiceColors.darkPrimary,
-            ),
+            style: NiceTextStyle.headline4,
           ),
         ),
         Container(
@@ -54,12 +50,13 @@ class SelectedItemsWidget extends StatelessWidget {
               String key = selectedItems.keys.elementAt(index);
               double value = selectedItems.values.elementAt(index);
               return Container(
-                padding: const EdgeInsets.symmetric(horizontal: NiceSpacing.lg),
+                height: NiceSpacing.xxlg,
+                padding: const EdgeInsets.only(left: NiceSpacing.lg),
                 child: Row(
                   children: [
                     Text(
                       key,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      style: NiceTextStyle.bodyText1,
                     ),
                     Expanded(
                       child: Row(
@@ -67,10 +64,7 @@ class SelectedItemsWidget extends StatelessWidget {
                         children: [
                           Text(
                             value.toString(),
-                            style: const TextStyle(
-                              color: NiceColors.black,
-                              fontSize: 14,
-                            ),
+                            style: NiceTextStyle.bodyText1,
                           ),
                           IconButton(
                             icon: const Icon(Icons.cancel),

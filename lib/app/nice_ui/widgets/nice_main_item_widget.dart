@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nice_analyses/app/nice_ui/nice_ui.dart';
 
 /// {@template nice_main_item}
 /// Creates a nice main item.
@@ -19,7 +20,7 @@ class NiceMainItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.only(bottom: NiceSpacing.sm),
       child: Container(
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),

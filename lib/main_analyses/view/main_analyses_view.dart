@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nice_analyses/app/nice_ui/colors/nice_colors.dart';
 import 'package:nice_analyses/app/nice_ui/widgets/nice_item_widget.dart';
 import 'package:nice_analyses/app/nice_ui/widgets/selected_items.dart';
 
@@ -73,6 +74,9 @@ class MainAnalysesView extends StatelessWidget {
       child: Column(
         children: [
           SelectedItemsWidget(selectedItems: selectedItems),
+          SizedBox(
+            height: 10,
+          ),
           ExpandableListWidget(
             titles: titles,
             items: items,
@@ -107,7 +111,12 @@ class ExpandableListWidget extends StatelessWidget {
         return NiceMainItem(
           child: ExpansionTile(
             title: MenuTitleWidget(title: title),
-            shape: Border.all(color: Colors.transparent),
+            backgroundColor: NiceColors.water,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            collapsedBackgroundColor: NiceColors.water,
+            collapsedShape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10))),
             children: [
               Column(
                 children: [
