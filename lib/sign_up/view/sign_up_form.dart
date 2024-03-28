@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nice_analyses/app/form_inputs/email.dart';
 import 'package:nice_analyses/app/form_inputs/password.dart';
 import 'package:nice_analyses/app/nice_ui/widgets/nice_password_text_field.dart';
@@ -9,17 +10,14 @@ import '../../app/nice_ui/widgets/primary_action_button.dart';
 import '../../app/nice_ui/widgets/registration_header.dart';
 import '../../app/nice_ui/widgets/scrollable_column.dart';
 import '../../app/nice_ui/widgets/text_link_button.dart';
-import '../../faq/faq.dart';
 import '../../second_menu/view/second_menu_page.dart';
-import '../../sign_in/view/sign_in_page.dart';
 
 class SignUpForm extends StatelessWidget {
   const SignUpForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-    return  const ScrollableColumn(
+    return const ScrollableColumn(
       mainAxisSize: MainAxisSize.min,
       children: [
         RegistrationHeader(title: 'Sign Up'),
@@ -192,9 +190,7 @@ class _TermsOfUse extends StatelessWidget {
         title: 'by signing up user accepts',
         link: 'Terms of use',
         direction: Axis.horizontal,
-        onPressed: () {
-          Navigator.of(context).pushReplacement<void, void>(FaqPage.route());
-        });
+        onPressed:() => context.go('/sign_up_page/faq_page'),);
   }
 }
 
@@ -233,8 +229,7 @@ class _SignIn extends StatelessWidget {
       title: 'Do you already have an account?',
       link: 'Sign in',
       direction: Axis.vertical,
-      onPressed: () =>
-          Navigator.of(context).pushReplacement<void, void>(SignInPage.route()),
+      onPressed: () => context.go('/sign_in_page'),
     );
   }
 }

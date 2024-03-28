@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nice_analyses/app/nice_ui/widgets/primary_action_button.dart';
-import 'package:nice_analyses/forgot_password/view/forgot_password_page.dart';
 import 'package:nice_analyses/main_analyses/view/main_analyses_page.dart';
 import '../../app/form_inputs/email.dart';
 import '../../app/form_inputs/password.dart';
@@ -10,7 +10,6 @@ import '../../app/nice_ui/widgets/nice_text_field.dart';
 import '../../app/nice_ui/widgets/registration_header.dart';
 import '../../app/nice_ui/widgets/scrollable_column.dart';
 import '../../app/nice_ui/widgets/text_link_button.dart';
-import '../../sign_up/view/sign_up_page.dart';
 
 class SignInView extends StatelessWidget {
   const SignInView({Key? key}) : super(key: key);
@@ -89,10 +88,7 @@ class _ForgotPasswordButton extends StatelessWidget {
       title: 'Forgot password?',
       link: '',
       direction: Axis.horizontal,
-      onPressed: () {
-            Navigator.of(context)
-                .pushReplacement<void, void>(ForgotPasswordPage.route());
-          },
+      onPressed: () => context.go('/forgot_password_page'),
     );
   }
 }
@@ -125,12 +121,11 @@ class _GoToSignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextLinkButton(
-        key: const Key('signInView_goToSignUp_textButton'),
-        title: 'Go to sign up',
-        link: '',
-        onPressed: () {
-          Navigator.of(context).pushReplacement<void, void>(SignUpPage.route());
-        });
+      key: const Key('signInView_goToSignUp_textButton'),
+      title: 'Go to sign up',
+      link: '',
+      onPressed: () => context.go('/sign_up_page'),
+    );
   }
 }
 
