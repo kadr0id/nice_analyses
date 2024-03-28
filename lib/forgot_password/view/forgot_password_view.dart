@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:nice_analyses/app/nice_ui/typography/nice_spacing.dart';
-import 'package:nice_analyses/sign_in/sign_in.dart';
 import '../../app/form_inputs/email.dart';
 import '../../app/nice_ui/nice_ui.dart';
-
 
 class ForgotPasswordView extends StatelessWidget {
   const ForgotPasswordView({Key? key}) : super(key: key);
@@ -42,11 +41,11 @@ class _EmailInput extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
         horizontal: NiceSpacing.lg,
       ),
-      child: Column(   
+      child: Column(
         children: [
           const Text(
             'Enter your email and we will send you a password reset',
-            style: TextStyle(fontSize: 12, color: Colors.black),  // Стиль тексту
+            style: TextStyle(fontSize: 12, color: Colors.black), // Стиль тексту
           ),
           NiceTextField(
             key: const Key('forgotPassword_emailInput_textField'),
@@ -100,11 +99,10 @@ class _GoToSignIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextLinkButton(
-        key: const Key('forgotPassword_goToSignIn_textButton'),
-        title: 'Go to sign in',
-        link: '',
-        onPressed: () {
-          Navigator.of(context).pushReplacement<void, void>(SignInPage.route());
-        });
+      key: const Key('forgotPassword_goToSignIn_textButton'),
+      title: 'Go to sign in',
+      link: '',
+      onPressed: () => context.go('/sign_in_page'),
+    );
   }
 }
