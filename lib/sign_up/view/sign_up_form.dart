@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nice_analyses/app/form_inputs/email.dart';
@@ -20,8 +21,9 @@ class SignUpForm extends StatelessWidget {
     return const ScrollableColumn(
       mainAxisSize: MainAxisSize.min,
       children: [
+        Spacer(),
         RegistrationHeader(title: 'Sign Up'),
-        Spacer(flex: 4),
+        Spacer(),
         _FirstNameInput(),
         SizedBox(height: NiceSpacing.xs),
         _LastNameInput(),
@@ -32,9 +34,9 @@ class SignUpForm extends StatelessWidget {
         SizedBox(height: NiceSpacing.xs),
         _ConfirmPasswordInput(),
         _TermsOfUse(),
-        Spacer(flex: 4),
-        _SignUpButton(),
         Spacer(flex: 2),
+        _SignUpButton(),
+        Spacer(),
         _SignIn(),
         SizedBox(height: NiceSpacing.sm)
       ],
@@ -186,11 +188,12 @@ class _TermsOfUse extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextLinkButton(
-        key: const Key('signUpForm_termsOfUse_textButton'),
-        title: 'by signing up user accepts',
-        link: 'Terms of use',
-        direction: Axis.horizontal,
-        onPressed:() => context.go('/sign_up_page/faq_page'),);
+      key: const Key('signUpForm_termsOfUse_textButton'),
+      title: 'by signing up user accepts',
+      link: 'Terms of use',
+      direction: Axis.horizontal,
+      onPressed: () => context.go('/sign_in_page/sign_up_page/faq_page'),
+    );
   }
 }
 
@@ -233,3 +236,6 @@ class _SignIn extends StatelessWidget {
     );
   }
 }
+
+
+
