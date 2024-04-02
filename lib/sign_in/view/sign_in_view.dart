@@ -1,7 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nice_analyses/app/nice_ui/widgets/primary_action_button.dart';
-import 'package:nice_analyses/main_analyses/view/main_analyses_page.dart';
 import '../../app/form_inputs/email.dart';
 import '../../app/form_inputs/password.dart';
 import '../../app/nice_ui/typography/nice_spacing.dart';
@@ -20,9 +20,9 @@ class SignInView extends StatelessWidget {
       children: [
         ScrollableColumn(
           children: [
-            const Spacer(flex: 1),
+            const Spacer(),
             const RegistrationHeader(title: 'Hello Nice analyses!'),
-            const Spacer(flex: 1),
+            const Spacer(),
             const _EmailInput(),
             const SizedBox(height: NiceSpacing.xs),
             const _PasswordInput(),
@@ -30,7 +30,7 @@ class SignInView extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: _ForgotPasswordButton(),
             ),
-            const Spacer(flex: 5),
+            const Spacer(flex: 2),
             _SignInButton(),
             const _GoToSignUp(),
             const Spacer(),
@@ -88,7 +88,7 @@ class _ForgotPasswordButton extends StatelessWidget {
       title: 'Forgot password?',
       link: '',
       direction: Axis.horizontal,
-      onPressed: () => context.go('/forgot_password_page'),
+      onPressed: () => context.go('/sign_in_page/forgot_password_page'),
     );
   }
 }
@@ -105,10 +105,7 @@ class _SignInButton extends StatelessWidget {
         child: PrimaryActionButton(
           key: const Key('signInView_signIn_textButton'),
           title: 'Sign In',
-          onPressed: () {
-            Navigator.of(context)
-                .pushReplacement<void, void>(MainAnalysesPage.route());
-          },
+          onPressed: () => context.go('/main_analyses_page'),
         ),
       ),
     );
@@ -124,7 +121,7 @@ class _GoToSignUp extends StatelessWidget {
       key: const Key('signInView_goToSignUp_textButton'),
       title: 'Go to sign up',
       link: '',
-      onPressed: () => context.go('/sign_up_page'),
+      onPressed: () => context.go('/sign_in_page/sign_up_page'),
     );
   }
 }
