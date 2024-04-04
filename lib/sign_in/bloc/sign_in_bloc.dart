@@ -1,13 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:formz/formz.dart';
-import '../../app/form_inputs/email.dart';
-import '../../app/form_inputs/password.dart';
-import '../../app/services/auth_user.dart';
-import '../../app/services/failures.dart';
+import 'package:nice_analyses/app/form_inputs/forms_input.dart';
+import 'package:nice_analyses/app/services/auth_user.dart';
+import 'package:nice_analyses/app/services/failures.dart';
 
 part 'sign_in_event.dart';
-
 part 'sign_in_state.dart';
 
 class SignInBloc extends Bloc<SignInEvent, SignInState> {

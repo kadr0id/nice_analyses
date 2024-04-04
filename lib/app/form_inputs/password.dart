@@ -1,5 +1,4 @@
-import 'package:formz/formz.dart';
-import 'package:nice_analyses/app/form_inputs/regex.dart';
+import 'package:nice_analyses/app/form_inputs/forms_input.dart';
 
 /// Password Form Input Validation Error
 enum PasswordValidationError {

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:nice_analyses/app/nice_ui/widgets/primary_action_button.dart';
 import 'package:nice_analyses/main_analyses/view/main_analyses_page.dart';
-import '../../app/form_inputs/email.dart';
-import '../../app/form_inputs/password.dart';
+import 'package:nice_analyses/sign_in/sign_in.dart';
+import '../../app/form_inputs/forms_input.dart';
 import '../../app/nice_ui/typography/nice_spacing.dart';
 import '../../app/nice_ui/widgets/nice_password_text_field.dart';
 import '../../app/nice_ui/widgets/nice_text_field.dart';
@@ -16,28 +17,54 @@ class SignInView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        ScrollableColumn(
-          children: [
-            const Spacer(flex: 1),
-            const RegistrationHeader(title: 'Hello Nice analyses!'),
-            const Spacer(flex: 1),
-            const _EmailInput(),
-            const SizedBox(height: NiceSpacing.xs),
-            const _PasswordInput(),
-            const Align(
-              alignment: Alignment.centerRight,
-              child: _ForgotPasswordButton(),
-            ),
-            const Spacer(flex: 5),
-            _SignInButton(),
-            const _GoToSignUp(),
-            const Spacer(),
-            const SizedBox(height: NiceSpacing.sm),
-          ],
-        ),
-      ],
+    return BlocListener<SignInBloc, SignInState>(
+      listenWhen: (previous, current) => previous.status != current.status,
+      listener: (context, state) {
+        if (state.status.isSuccess) {
+          //   AbraSnackBar.message(
+          //     l10n.authenticationSuccess,
+          //     key: const Key('signInView_success_snackBar'),
+          //   ).show(context: context);
+          //   Navigator.of(context).pop();
+          // }
+          if (state.status.isFailure) {
+            if (state.submissionError == SubmissionError.userNotFound) {
+              // AbraSnackBar.error(
+              //   l10n.userNotFoundFailure,
+              //   key: const Key('signInView_failure_userNotFound_snackBar'),
+              // ).show(context: context);
+            } else if (state.submissionError == SubmissionError.unknown) {
+              // AbraSnackBar.error(
+              //   l10n.authenticationFailure,
+              //   key: const Key('signInView_failure_unknown_snackBar'),
+              // ).show(context: context);
+            }
+          }
+        }
+      },
+      child: Stack(
+        children: [
+          ScrollableColumn(
+            children: [
+              const Spacer(flex: 1),
+              const RegistrationHeader(title: 'Hello Nice analyses!'),
+              const Spacer(flex: 1),
+              const _EmailInput(),
+              const SizedBox(height: NiceSpacing.xs),
+              const _PasswordInput(),
+              const Align(
+                alignment: Alignment.centerRight,
+                child: _ForgotPasswordButton(),
+              ),
+              const Spacer(flex: 5),
+              _SignInButton(),
+              const _GoToSignUp(),
+              const Spacer(),
+              const SizedBox(height: NiceSpacing.sm),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

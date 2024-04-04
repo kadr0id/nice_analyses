@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:nice_analyses/app/form_inputs/email.dart';
-import 'package:nice_analyses/app/form_inputs/password.dart';
-import 'package:nice_analyses/app/nice_ui/widgets/nice_password_text_field.dart';
+import 'package:nice_analyses/app/form_inputs/forms_input.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nice_analyses/sign_up/bloc/sign_up_bloc.dart';
 
 import '../../app/nice_ui/typography/nice_spacing.dart';
-import '../../app/nice_ui/widgets/nice_text_field.dart';
-import '../../app/nice_ui/widgets/primary_action_button.dart';
-import '../../app/nice_ui/widgets/registration_header.dart';
-import '../../app/nice_ui/widgets/scrollable_column.dart';
-import '../../app/nice_ui/widgets/text_link_button.dart';
+import '../../app/nice_ui/widgets/widgets.dart';
 import '../../second_menu/view/second_menu_page.dart';
 
 class SignUpForm extends StatelessWidget {
@@ -17,28 +13,40 @@ class SignUpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ScrollableColumn(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        RegistrationHeader(title: 'Sign Up'),
-        Spacer(flex: 4),
-        _FirstNameInput(),
-        SizedBox(height: NiceSpacing.xs),
-        _LastNameInput(),
-        SizedBox(height: NiceSpacing.xs),
-        _EmailInput(),
-        SizedBox(height: NiceSpacing.xs),
-        _PasswordInput(),
-        SizedBox(height: NiceSpacing.xs),
-        _ConfirmPasswordInput(),
-        _TermsOfUse(),
-        Spacer(flex: 4),
-        _SignUpButton(),
-        Spacer(flex: 2),
-        _SignIn(),
-        SizedBox(height: NiceSpacing.sm)
-      ],
-    );
+    return
+      BlocListener<SignUpBloc, SignUpState>(
+        listenWhen: (previous, current) => previous.status != current.status,
+        listener: (context, state) async {
+          if (state.status.isSuccess) {
+
+
+          } else if (state.status.isFailure) {
+
+          }
+        },
+        child: const ScrollableColumn(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            RegistrationHeader(title: 'Sign Up'),
+            Spacer(flex: 4),
+            _FirstNameInput(),
+            SizedBox(height: NiceSpacing.xs),
+            _LastNameInput(),
+            SizedBox(height: NiceSpacing.xs),
+            _EmailInput(),
+            SizedBox(height: NiceSpacing.xs),
+            _PasswordInput(),
+            SizedBox(height: NiceSpacing.xs),
+            _ConfirmPasswordInput(),
+            _TermsOfUse(),
+            Spacer(flex: 4),
+            _SignUpButton(),
+            Spacer(flex: 2),
+            _SignIn(),
+            SizedBox(height: NiceSpacing.sm)
+          ],
+        ),
+      );
   }
 }
 
@@ -100,9 +108,7 @@ class _EmailInput extends StatelessWidget {
     );
   }
 
-  String? _getValidationErrorMessage(
-    EmailValidationError? error,
-  ) {
+  String? _getValidationErrorMessage(EmailValidationError? error,) {
     switch (error) {
       case EmailValidationError.invalid:
         return 'Invalid email';
@@ -133,9 +139,7 @@ class _PasswordInput extends StatelessWidget {
     );
   }
 
-  String? _getValidationErrorMessage(
-    PasswordValidationError? error,
-  ) {
+  String? _getValidationErrorMessage(PasswordValidationError? error,) {
     switch (error) {
       case PasswordValidationError.invalid:
         return 'Invalid password';
@@ -166,9 +170,7 @@ class _ConfirmPasswordInput extends StatelessWidget {
     );
   }
 
-  String? _getValidationErrorMessage(
-    PasswordValidationError? error,
-  ) {
+  String? _getValidationErrorMessage(PasswordValidationError? error,) {
     switch (error) {
       case PasswordValidationError.invalid:
         return 'Invalid password';
@@ -186,11 +188,11 @@ class _TermsOfUse extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextLinkButton(
-        key: const Key('signUpForm_termsOfUse_textButton'),
-        title: 'by signing up user accepts',
-        link: 'Terms of use',
-        direction: Axis.horizontal,
-        onPressed:() => context.go('/sign_up_page/faq_page'),);
+      key: const Key('signUpForm_termsOfUse_textButton'),
+      title: 'by signing up user accepts',
+      link: 'Terms of use',
+      direction: Axis.horizontal,
+      onPressed: () => context.go('/sign_up_page/faq_page'),);
   }
 }
 

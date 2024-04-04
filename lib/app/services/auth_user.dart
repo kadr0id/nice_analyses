@@ -21,8 +21,10 @@ class AuthService {
     }
     return null;
   }
-    Future<NiceUser?> registerWithEmailAndPassword(String email,
-        String password) async {
+    Future<NiceUser?> registerWithEmailAndPassword({
+      required String email,
+      required String password,
+    }) async {
       try {
         UserCredential result = await _fAuth.createUserWithEmailAndPassword(
             email: email, password: password);
